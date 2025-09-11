@@ -1,5 +1,9 @@
 # Prompt‑Driven Development (PDD) — Workspace Guide
 
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
+This project is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0). See the `LICENSE` file for details.
+
 > Cheat Sheet
 - Switch mode: Chat view → Mode → pick "Concise" | "Plan" | "Research".
 - Run a phase: "Use `pdd/prompts/<phase>.prompt.md` to produce the artifact." (Ideate | Plan | Execute | Document)

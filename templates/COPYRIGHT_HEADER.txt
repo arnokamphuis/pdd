@@ -1,0 +1,10 @@
+/*
+ * Copyright (c) 2025 Arno Kamphuis
+ *
+ * Licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0).
+ * You must give appropriate credit to the original creator when distributing or
+ * reusing this file. A suggested attribution line is shown below.
+ *
+ * Suggested attribution:
+ *   "<Project or file name>" by Arno Kamphuis (https://github.com/arnokamphuis/pdd) licensed under CC BY 4.0
+ */
