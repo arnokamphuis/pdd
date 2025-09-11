@@ -26,6 +26,13 @@ This repository includes a Prompt‑Driven Development (PDD) workflow powered by
 - Global Copilot instructions
   - `.github/copilot-instructions.md` — MCP-first behavior, file conventions, and quick starters
 
+IMPORTANT: This repository currently stores GitHub-specific files under a folder named `dot_github/` to avoid accidental activation. To enable GitHub features (workflows, issue templates, CODEOWNERS, chat modes), rename the `dot_github/` folder to `.github/` in your local copy and push the change to your fork or repository root. Example:
+
+  mv dot_github .github
+  git add -A
+  git commit -m "chore: enable GitHub features by renaming dot_github to .github"
+  git push origin main
+
 ## Prerequisites
 - VS Code with GitHub Copilot Chat enabled
 - (Optional) MCP servers configured for:
