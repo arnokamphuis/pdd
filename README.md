@@ -1,28 +1,28 @@
-# Prompt‑Driven Development (PDD) — Workspace Guide
+# Design Thinking Prompt‑Driven Development (PDD) — Workspace Guide
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 This project is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0). See the `LICENSE` file for details.
 
-> Cheat Sheet
-- Switch mode: Chat view → Mode → pick "Concise" | "Plan" | "Research".
-- Run a phase: "Use `pdd/prompts/<phase>.prompt.md` to produce the artifact." (Ideate | Plan | Execute | Document)
-- Execute fast (Concise): "Switch to Concise and refine this request; execute the first todo."
-- Plan fast (Plan): "Switch to Plan and convert the latest ideation artifact into a plan file per the template."
-- Research fast (Research): "Switch to Research and summarize options with citations; propose next steps."
+> Design Thinking Cheat Sheet
+- Switch to design thinking modes: Chat view → Mode → pick "Ideate" | "Plan" | "Execute" | "Document"
+- Quick modes: "Concise" for rapid execution | "Research" for citations and synthesis
+- Design thinking workflow: "Switch to Ideate and explore user needs" → "Switch to Plan for learning experiments" → "Switch to Execute for prototyping" → "Switch to Document for synthesis"
 
-This repository includes a Prompt‑Driven Development (PDD) workflow powered by MCP and custom chat modes. Use this README to run Ideate → Plan → Execute → Document with consistent, repeatable steps.
+This repository includes a Design Thinking Prompt‑Driven Development (PDD) workflow with human-in-the-loop brainstorm-dev sessions powered by MCP and custom chatmodes. Use this README to run **Ideate → Plan → Execute → Document** with consistent, user-centered, repeatable steps.
 
 ## What’s Included
-- PDD prompts (reusable) for each phase
-  - `pdd/prompts/ideate.prompt.md`
-  - `pdd/prompts/plan.prompt.md`
-  - `pdd/prompts/execute.prompt.md`
-  - `pdd/prompts/document.prompt.md`
-- Custom chat modes for specialized workflows
-  - `.github/chatmodes/concise.chatmode.md` — concise, precise execution mode
-  - `.github/chatmodes/plan.chatmode.md` — read-first, plan-only mode
-  - `.github/chatmodes/research.chatmode.md` — research/citations mode
+- Design thinking chatmodes for human-in-the-loop brainstorm-dev sessions
+  - `dot_github/chatmodes/ideate.chatmode.md` — user-centered problem exploration and solution concepts
+  - `dot_github/chatmodes/plan.chatmode.md` — prototyping-focused planning for learning experiments
+  - `dot_github/chatmodes/execute.chatmode.md` — experimentation and rapid prototyping
+  - `dot_github/chatmodes/document.chatmode.md` — learning synthesis across design thinking sessions
+- Specialized workflow chatmodes
+  - `dot_github/chatmodes/concise.chatmode.md` — concise, precise execution mode
+  - `dot_github/chatmodes/research.chatmode.md` — research/citations mode
+- Supporting prompts for structured tasks
+  - `dot_github/prompts/execute.prompt.md`
+  - `dot_github/prompts/document.prompt.md`
 - Global Copilot instructions
   - `.github/copilot-instructions.md` — MCP-first behavior, file conventions, and quick starters
 
@@ -50,18 +50,18 @@ IMPORTANT: This repository currently stores GitHub-specific files under a folder
 
 ## Quick Start
 1) Ideate (produce a concept brief)
-   - Chat: “Use `pdd/prompts/ideate.prompt.md` to produce the ideation artifact for <initiative>.”
+   - Chat: “Switch to Ideate and explore user needs for <problem>.”
    - Output: `pdd/ideate/YYYY-MM-DD-<slug>.md`
 2) Plan (convert ideation → executable plan)
    - Mode: Switch to Plan (or reference `.github/chatmodes/plan.chatmode.md`)
-   - Chat: “Convert the latest ideation artifact into a plan per the template.”
+   - Chat: “Switch to Plan and convert ideation into learning experiments.”
    - Output: `pdd/plan/YYYY-MM-DD-<slug>-plan.md`
 3) Execute (task-by-task)
    - Mode: Switch to Concise
-   - Chat: “Execute the next eligible plan task; update artifacts and plan.”
+   - Chat: “Switch to Execute and run the next prototype experiment.”
    - Output: `pdd/execute/T-XXX-<slug>/README.md` + plan updates
 4) Document (reconcile and summarize)
-   - Chat: “Use `pdd/prompts/document.prompt.md` to reconcile plan vs execution and produce the summary.”
+   - Chat: “Switch to Document and synthesize session insights.”
    - Output: `pdd/execute/documentation-summary-YYYY-MM-DD.md` + updated plan
 
 ## Chat Modes
@@ -83,17 +83,11 @@ IMPORTANT: This repository currently stores GitHub-specific files under a folder
 - Behavior: 3–6 sources, 5–10 key findings, 3–7 actionable next steps
 - Starter: “Switch to Research and summarize options with citations; propose next steps aligned to PDD.”
 
-## Prompts (Phase Files)
-- Ideate: `pdd/prompts/ideate.prompt.md`
-  - Produces: `pdd/ideate/YYYY-MM-DD-<slug>.md` (concept brief)
-  - Includes: Q&A, options, scoring, rationale, acceptance criteria
-- Plan: `pdd/prompts/plan.prompt.md`
-  - Produces: `pdd/plan/YYYY-MM-DD-<slug>-plan.md` (deliverables, milestones, WBS, ordering, risks)
-  - Tasks: id, owner, deps, effort, acceptance, verification; critical path
-- Execute: `pdd/prompts/execute.prompt.md`
+## Prompts (Supporting Files)
+- Execute: `dot_github/prompts/execute.prompt.md`
   - Produces: per-task artifacts under `pdd/execute/T-XXX-<slug>/` and updates plan statuses
   - Verifies: acceptance criteria + quality gates (build/lint/tests)
-- Document: `pdd/prompts/document.prompt.md`
+- Document: `dot_github/prompts/document.prompt.md`
   - Produces: `pdd/execute/documentation-summary-YYYY-MM-DD.md` + updated plan linking artifacts
 
 ## File Conventions
