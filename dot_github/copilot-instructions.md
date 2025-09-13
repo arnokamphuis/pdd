@@ -1,58 +1,49 @@
-# Copilot Instructions — PDD + MCP
+# Copilot Instructions — Design Thinking PDD
 
-Operate with Prompt‑Driven Development (PDD) and MCP-first behavior. Default flow: Ideate → Plan → Execute → Document. For small, rapid tasks, switch to the Concise chat mode.
+Operate with Design Thinking Prompt‑Driven Development (PDD) and MCP-first behavior. Use chatmodes for human-in-the-loop design thinking sessions: **Ideate → Plan → Execute → Document**. For small, rapid tasks, switch to the Concise chat mode.
 
-## Mode Decision (When to use which)
-- Use "Concise" for: grooming, clarifying scope, small/surgical changes, executing a single plan task.
-- Use "Plan" for: generating or updating the plan from ideation; read-only analysis, ordering, and risk assessment.
-- Use "Research" for: exploring technologies or gathering information with citations; read-first, no code edits.
-- Use default chat with prompt files for: broader tasks outside PDD phases.
+## Design Thinking Chatmodes
+- **Ideate**: Switch to design thinking ideation for user-centered problem exploration and solution concepts
+- **Plan**: Switch to prototyping-focused planning for learning experiments and assumption testing
+- **Execute**: Switch to experimentation mode for rapid prototyping and validation
+- **Document**: Switch to learning synthesis for capturing insights across brainstorm-dev sessions
+- **Concise**: Switch for ≤ 10 lines; next action first; surgical changes; executing single plan tasks
+- **Research**: Switch for citations + synthesis → actionable steps; read-first, no code edits
+
+## Design Thinking Workflow
+1. **Ideate**: Human-centered exploration of user problems and solution concepts
+2. **Plan**: Convert concepts into testable prototypes and learning experiments
+3. **Execute**: Run experiments, build prototypes, validate assumptions
+4. **Document**: Synthesize learnings and prepare for next iteration
 
 ## Global Behavior
-- MCP-first: use SequentialThinking (stepwise), Memory (persistence), GitHub (repo context/issues/PRs).
-- Traceability: record assumptions, decisions, and artifact paths in outputs; prefer facts from repo/GitHub over guesses.
-- One primary artifact per phase run; keep everything under `pdd/` using the required filenames.
-- Safety: if asked for harmful/forbidden content, reply: "Sorry, I can't assist with that."
+- MCP‑first: use SequentialThinking, Memory (persist decisions + artifact paths), and GitHub (issues/PRs/repo context)
+- Traceability: state assumptions, decisions, and exact file paths in outputs
+- Safety: if a request is harmful/forbidden → "Sorry, I can't assist with that."
+- Persistent progress: Use Memory MCP to maintain context across design thinking sessions
 
-## Concise Chat Mode
-Activate via mode picker or by referencing `.github/chatmodes/concise.chatmode.md` (name: "Concise").
-- ≤ 10 lines per reply; next action first.
-- Refine requests to 3–7 TODOs; exactly one in-progress at a time.
-- Concrete outputs with exact paths; validation per item: PASS/FAIL + next.
-- Minimal reply template:
-  - Objective + next action (1 line)
-  - TODOs (one in-progress)
-  - Execution notes (1–3 bullets)
-  - Validation: PASS/FAIL (+ next)
-  - Links/paths changed
+## Artifact Structure
+Design thinking chatmodes produce these artifacts:
+- **Ideate** → `ideate/YYYY-MM-DD-<slug>.md` (user-centered concepts and solution exploration)
+- **Plan** → `plan/YYYY-MM-DD-<slug>-plan.md` (learning experiments and assumption testing)
+- **Execute** → `execute/T-XXX-<slug>/README.md` (experiment results and prototype outcomes)
+- **Document** → `execute/brainstorm-dev-session-YYYY-MM-DD.md` (session learning synthesis)
 
-## Plan Chat Mode
-Activate via mode picker or by referencing `.github/chatmodes/plan.chatmode.md` (name: "Plan").
-- Read-first; no code edits. Convert ideation → plan with a WBS and ordering.
-- Output one plan at `pdd/plan/YYYY-MM-DD-<slug>-plan.md`; keep responses ≤ 16 lines and link to the plan.
-
-## Research Chat Mode
-Activate via mode picker or by referencing `.github/chatmodes/research.chatmode.md` (name: "Research").
-- Research-first; no code edits. Cite sources; synthesize findings into actionable steps aligned to PDD.
-- Keep replies ≤ 20 lines; link to sources and notes.
-
-## Phase Prompts (run when needed)
-- Ideate: `pdd/prompts/ideate.prompt.md` → write `pdd/ideate/YYYY-MM-DD-<slug>.md`.
-- Plan: `pdd/prompts/plan.prompt.md` → write `pdd/plan/YYYY-MM-DD-<slug>-plan.md`.
-- Execute: `pdd/prompts/execute.prompt.md` → update plan; create `pdd/execute/T-XXX-<slug>/README.md`.
-- Document: `pdd/prompts/document.prompt.md` → update plan; emit `pdd/execute/documentation-summary-YYYY-MM-DD.md`.
+Additional prompts for structured tasks:
+- Execute: `.github/prompts/execute.prompt.md` → structured task execution
+- Document: `.github/prompts/document.prompt.md` → comprehensive documentation summaries
 
 ## File/Folder Conventions
-- Ideation: `pdd/ideate/YYYY-MM-DD-<slug>.md`
-- Plan: `pdd/plan/YYYY-MM-DD-<slug>-plan.md`
-- Execute (per task): `pdd/execute/T-XXX-<slug>/README.md`
-- Doc summary: `pdd/execute/documentation-summary-YYYY-MM-DD.md`
-- Use kebab-case `<slug>`, zero-padded task ids (`T-001`), ISO dates.
+- Use kebab-case `<slug>`, zero-padded task ids (`T-001`), ISO dates
+- One primary artifact per phase run; link related artifacts
+- Experiments focus on learning validation over feature completion
+- Plans include assumption testing and pivot triggers
 
-## Execution Rules
-- Choose the next eligible plan task (`status: not-started`, deps done). If blocked, mark `blocked` with reason and pick the next.
-- For each task: include acceptance criteria and verification steps; keep steps small (30–120 min).
-- Quality gates (when applicable): build, lint/typecheck, unit tests, smoke test.
+## Execution Rules for Experiments
+- Choose experiments based on riskiest assumptions first
+- Each task: learning objective, hypothesis, success criteria, pivot triggers
+- Quality gates: build, lint/typecheck, unit tests, smoke test (adjust to project)
+- Update plans with learning outcomes and strategic recommendations
 
 ## Validation Commands (adjust to project)
 - Build:
@@ -70,9 +61,9 @@ Activate via mode picker or by referencing `.github/chatmodes/research.chatmode.
   ```
 
 ## Quick Starters
-- Ideate: "Use `pdd/prompts/ideate.prompt.md` to produce the ideation artifact for <initiative>."
-- Plan: "Switch to Plan and convert the latest ideation artifact into a plan file per the template."
-- Execute: "Switch to Concise and execute the next eligible plan task; update artifacts and plan."
-- Document: "Use `pdd/prompts/document.prompt.md` to reconcile plan vs execution and produce the summary."
-- Research: "Switch to Research and summarize options with citations; propose next steps aligned to PDD."
-- Concise mode: "Switch to Concise and refine this request; execute the first todo."
+- Design thinking ideation: "Switch to Ideate and explore user needs for <problem>"
+- Prototyping planning: "Switch to Plan and convert ideation into learning experiments"
+- Rapid experimentation: "Switch to Execute and run the next prototype experiment"
+- Learning synthesis: "Switch to Document and synthesize session insights"
+- Concise execution: "Switch to Concise and execute the next eligible plan task"
+- Research mode: "Switch to Research and summarize options with citations"
